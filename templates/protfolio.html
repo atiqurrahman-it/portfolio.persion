@@ -1,0 +1,40 @@
+{% load static %}
+
+<section class="ftco-section" id="blog-section">
+        <!-- ======= Portfolio Section ======= -->
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Portfolio</h2>
+                <p>Check our Portfolio</p>
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="all" class="filter-active">All</li>
+                        {% for p in prot_category%}
+                        <li data-filter=".{{p.name}}"> {{p.name}} </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                {% for pro in total_protfolio %}
+                <div class="col-lg-4 col-md-6 portfolio-item mix {{pro.pro_category.name }}">
+                    <a href="{% url 'single_page_2' id=pro.id %}"> <img src="{{ pro.image.url }}" style="width:350px; height:240px;" class="img-fluid" alt=""> </a>
+                    <div class="portfolio-info">
+                        <h4> <a href="{% url 'single_page_2' id=pro.id %}">{{ pro.title }} </a>  </h4>
+                        <p> {{ pro.pro_category.name }} </p>
+                        <a href="assets/img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                        <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                    </div>
+                </div>
+                {% endfor  %}
+            </div>
+        </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+

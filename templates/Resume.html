@@ -1,0 +1,97 @@
+  <section class="ftco-section ftco-no-pb goto-here" id="resume-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav id="navi">
+                        <ul>
+                            <li><a href="#page-1">Education</a></li>
+                            <li><a href="#page-2">Experience</a></li>
+                            <li><a href="#page-3">Skills</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-9">
+                    <div id="page-1" class="page one">
+                        <h2 class="heading">Education</h2>
+                        {% for p in education %}
+                        <div class="resume-wrap d-flex ftco-animate">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="flaticon-ideas"></span>
+                            </div>
+                            <div class="text pl-3">
+                                <span class="date">  {{ p.year }} </span>
+                                <h2> {{ p.lavel }} </h2>
+                                <span class="position"> {{ p.campus_name }} </span>
+                                <p> {{ p.details }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="page-2" class="page two">
+                        <h2 class="heading">Experience</h2>
+                         {% for p in Experience_proj %}
+                        <div class="resume-wrap d-flex ftco-animate">
+                            <div class="icon d-flex align-items-center justify-content-center">
+                                <span class="flaticon-ideas"></span>
+                            </div>
+                            <div class="text pl-3">
+                                <span class="date">{{ p.work_year }} </span>
+                                <h2> {{ p.work_category }} </h2>
+                                <span class="position"> {{ p.place_name }} </span>
+                                <p> {{ p.details }} </p>
+                            </div>
+                        </div>
+                   {% endfor %}
+                    </div>
+                    <div id="page-3" class="page three">
+                        <h2 class="heading">Skills</h2>
+
+                        <div class="row progress-circle mb-5">
+
+                            {% for s in Resent_Skill %}
+                            <div class="col-lg-4 mb-4">
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h2 class="h5 font-weight-bold text-center mb-4"> {{ s.Skill_name }}</h2>
+                                    <!-- Progress bar 1 -->
+                                    <div class="text-center">
+                                        <svg class="radial-progress" data-percentage="{{ s.Skill_Per }}" viewBox="0 0 80 80">
+                                            <circle class="incomplete" cx="40" cy="40" r="35"></circle>
+                                            <circle class="complete" cx="40" cy="40" r="35" style="stroke-dashoffset: 39.58406743523136;"></circle>
+                                            <text class="percentage" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)"> {{ s.Skill_Per }}% </text>
+                                          </svg>
+                                    </div>
+                                    <!-- END -->
+
+                                    <!-- Demo info -->
+                                    <div class="row text-center mt-4">
+                                        <div class="col-6 border-right">
+                                            <div class="h4 font-weight-bold mb-0">{{ s.Skill_Pe }} %</div><span class="small text-gray">Last week</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="h4 font-weight-bold mb-0"> {{ s.Skill_Per }}%</div><span class="small text-gray">Last month</span>
+                                        </div>
+                                    </div>
+                                    <!-- END -->
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row">
+                             {% for p in Skill %}
+                            <div class="col-md-6 animate-box">
+                                <h4>{{ p.Skill_name }}</h4>
+                                <div id="bar{{p.id}}" class="barfiller">
+                                    <span class="tip"></span>
+                                    <span class="fill" data-percentage="{{p.Skill_Per}}"></span>
+                                </div>
+                            </div>
+                              {% endfor %}
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>

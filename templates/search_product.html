@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} search {% endblock title %}
+
+{% block stylesheet %}
+<style>
+  .search_title {
+  margin-top:150px;
+  padding-bottom: 20px;
+
+  }
+</style>
+{% endblock stylesheet %}
+
+
+{% block header %}
+{% include 'navbar2.html' %}
+{% endblock header%}
+
+<!-- about header_body -->
+{% block header_body %}
+{% endblock header_body %}
+
+<!-- about section -->
+{% block about%}
+{% endblock about%}
+
+<!-- resume section -->
+{% block resume %}
+{% endblock resume %}
+
+<!-- services section -->
+{% block services %}
+{% endblock services %}
+
+<!-- project section -->
+{% block project %}
+{% endblock project %}
+
+<!-- protfolio section -->
+{% block protfolio %}
+{% endblock protfolio %}
+
+
+{% block main_contain %}
+
+
+<section class="ftco-section" id="blog-section">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2> Search </h2>
+            </div>
+
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+               {% for search in search_product %}
+                <div class="col-lg-4 col-md-6 portfolio-item mix filter-app">
+                    <img src="{{ search.image.url }}" class="img-fluid" alt="">
+                    <div class="portfolio-info">
+                        <h4> {{ search.title }}  </h4>
+                       <p> {{ search.category }}  </p>
+                    </div>
+                </div>
+              {% endfor  %}
+            </div>
+        </div>
+    </section>
+
+{% endblock main_contain %}
+
+{% block script %}
+{% endblock script %}

@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Atiqur rahman {% endblock title %}
+
+{% block stylesheet %}
+{% endblock stylesheet %}
+
+
+<!-- header section -->
+{% block header%}
+{% include 'header.html' %}
+{% endblock header%}
+
+<!-- about header_body -->
+{% block header_body %}
+{% include 'header_body.html' %}
+{% endblock header_body %}
+
+<!-- about section -->
+{% block about%}
+{% include 'about.html' %}
+{% endblock about%}
+
+<!-- resume section -->
+{% block resume%}
+{% include 'Resume.html' %}
+{% endblock resume%}
+
+<!-- services section -->
+{% block services %}
+{% include 'service.html' %}
+{% endblock services %}
+
+<!-- project section -->
+{% block project %}
+{% include 'project.html' %}
+{% endblock project %}
+
+<!-- protfolio section -->
+{% block protfolio %}
+{% include 'protfolio.html' %}
+{% endblock protfolio %}
+
+
+
+
+{% block main_contain %}
+
+
+    <section class="ftco-section ftco-hireme img" style="background-image: url(images/bg_1.jpg)">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 ftco-animate text-center">
+                    <h2>I'm <span>Available</span> for freelancing</h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <p class="mb-0"><a href="#" class="btn btn-primary py-3 px-5">Hire me</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h1 class="big big-2">Contact</h1>
+                    <h2 class="mb-4">Contact Me</h2>
+                    <p> {{ about_me.details }} </p>
+                </div>
+            </div>
+
+            <div class="row d-flex contact-info mb-5">
+                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                    <div class="align-self-stretch box text-center p-4 shadow">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="icon-map-signs"></span>
+                        </div>
+                        <div>
+                            <h3 class="mb-4">Address</h3>
+                            <p> {{ about_me.address }} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                    <div class="align-self-stretch box text-center p-4 shadow">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="icon-phone2"></span>
+                        </div>
+                        <div>
+                            <h3 class="mb-4">Contact Number</h3>
+                            <p><a href="tel://1234567920"> {{ about_me.phone }} </a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                    <div class="align-self-stretch box text-center p-4 shadow">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="icon-paper-plane"></span>
+                        </div>
+                        <div>
+                            <h3 class="mb-4">Email Address</h3>
+                            <p><a href="mailto:info@yoursite.com"> {{ about_me.email }} </a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                    <div class="align-self-stretch box text-center p-4 shadow">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="icon-globe"></span>
+                        </div>
+                        <div>
+                            <h3 class="mb-4">Website</h3>
+                            <p><a href="#"> yoursite.com </a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row no-gutters block-9">
+
+                <div class="col-md-6 order-md-last d-flex">
+                    <form action="" method="post" class="bg-light p-4 p-md-5 contact-form">
+                        {% csrf_token %}
+                        {{ form.as_p}}
+                        {{ form.error }}
+
+                        <div class="form-group">
+                            <input type="submit"  value="Send Message" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <div class="col-md-6 d-none d-sm-block">
+                    <div class=" imgbgdiv ">
+                        <div class="imgdiv ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <!-- Begin Frequently Area -->
+        <div class="frequently-area pt-60 pb-50">
+            <div class="container">
+                <div class="row no-gutters justify-content-center pb-5">
+                    <div class="col-md-12 heading-section text-center faq_section">
+                        <h2 class="mb-4 mt-3"> FAQ Question </h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="frequently-content">
+                            <div class="frequently-desc">
+                                <h3>Below are frequently asked questions, you may find the answer for yourself</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id erat sagittis, faucibus metus malesuada, eleifend turpis. Mauris semper augue id nisl aliquet, a porta lectus mattis. Nulla at tortor augue. In eget enim
+                                    diam. Donec gravida tortor sem, ac fermentum nibh rutrum sit amet. Nulla convallis mauris vitae congue consequat. Donec interdum nunc purus, vitae vulputate arcu fringilla quis. Vivamus iaculis euismod dui.</p>
+                            </div>
+                        </div>
+                        <!-- Begin Frequently Accordin -->
+                        <div class="frequently-accordion">
+                            <div id="accordion">
+                              {% for p in Faq %}
+
+                                <div class="card">
+                                    <div class="card-header" id="heading{{p.id}}">
+                                        <h5 class="mb-0">
+                                            <a class="collapsed" data-toggle="collapse" data-target="#collapse{{p.id}}" aria-expanded="false" aria-controls="collapseTwo">
+                                                {{ p.question }}
+                                </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapse{{p.id}}" class="collapse" aria-labelledby="heading{{p.id}}" data-parent="#accordion">
+                                        <div class="card-body">
+                                            {{ p.answer }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <!--Frequently Accordin End Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Frequently Area End Here -->
+    </section>
+
+
+{% endblock main_contain %}
+
+
+
+{% block script %}
+
+<script>
+
+
+</script>
+{% endblock script %}

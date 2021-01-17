@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {% endblock title %}
+
+{% block stylesheet %}
+{% endblock stylesheet %}
+
+
+{% block header%}
+{% include 'navbar2.html' %}
+{% endblock header%}
+
+<!--  header_body -->
+{% block header_body %}
+{% endblock header_body %}
+
+<!-- about section -->
+{% block about%}
+{% endblock about%}
+
+<!-- resume section -->
+{% block resume %}
+{% endblock resume %}
+
+<!-- services section -->
+{% block services %}
+{% endblock services %}
+
+<!-- project section -->
+{% block project %}
+{% include 'project.html' %}
+<div class="container">
+     <div class="row">
+         <div class="col-md-12">
+             <nav aria-label="Page navigation example">
+                  {% if total_project.has_other_pages %}
+                 <ul class="pagination">
+                     {% if total_project.has_previous %}
+                      <li  class="page-item"><a  class="page-link" href="?page={{ total_project.previous_page_number }}">Previous</a></li>
+                    {% else %}
+                      <li class="disabled"></li>
+                    {% endif %}
+
+                      {% for i in total_project.paginator.page_range %}
+                      {% if total_project.number == i %}
+                     <li class="active"> <a  class="page-link active">  {{ i }} </a> </li>
+                      {% else %}
+                        <li class="page-item"><a  class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+
+                     {% if total_project.has_next %}
+                     <li class="page-item"><a class="page-link" href="?page={{ total_project.next_page_number }}">Next</a></li>
+                     {% else %}
+                     <li class="disabled"></li>
+                     {% endif %}
+                 </ul>
+                 {% endif %}
+             </nav>
+
+           </div>
+       </div>
+   </div>
+
+{% endblock project %}
+
+<!-- protfolio section -->
+{% block protfolio %}
+{% endblock protfolio %}
+
+
+{% block main_contain %}
+{% endblock main_contain %}
+
+{% block script %}
+{% endblock script %}
