@@ -22,18 +22,18 @@ class Footer_Header(models.Model):
 
 class About_me(models.Model):
     name = models.CharField(max_length=150)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(blank=True, null=True)
     phone = models.IntegerField()
     email = models.EmailField()
     details = models.TextField()
     address = models.TextField(max_length=600)
     Date_of_birth = models.DateField()
     Zip_code = models.IntegerField()
-    cv = models.FileField(blank=True)
+    cv = models.FileField(blank=True, null=True)
     total_project = models.IntegerField(blank=True)
-    Happy_Customers = models.IntegerField(blank=True,default=20)
-    total_Awards = models.IntegerField(blank=True,default=100)
-    project_pending = models.IntegerField(blank=True,default=50)
+    Happy_Customers = models.IntegerField(blank=True, default=20)
+    total_Awards = models.IntegerField(blank=True, default=100)
+    project_pending = models.IntegerField(blank=True, default=50)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
@@ -54,7 +54,7 @@ class Education(models.Model):
 
 
 class Skills(models.Model):
-    Skill_name = models.CharField(blank=True,max_length=25)
+    Skill_name = models.CharField(blank=True, max_length=25)
     Skill_Per = models.IntegerField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -85,8 +85,8 @@ class Category(models.Model):
 
 
 class project(models.Model):
-    title = models.CharField(blank=True,max_length=300)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    title = models.CharField(blank=True, max_length=300)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     details = models.TextField(blank=True)
     image = models.ImageField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
@@ -109,8 +109,8 @@ class Protfolio_Category(models.Model):
 
 
 class Protfolio(models.Model):
-    title = models.CharField(blank=True,max_length=300)
-    pro_category = models.ForeignKey(Protfolio_Category,on_delete=models.CASCADE)
+    title = models.CharField(blank=True, max_length=300)
+    pro_category = models.ForeignKey(Protfolio_Category, on_delete=models.CASCADE)
     details = models.TextField(blank=True)
     image = models.ImageField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
@@ -121,7 +121,7 @@ class Protfolio(models.Model):
 
 
 class Service(models.Model):
-    title = models.CharField(blank=True,max_length=300)
+    title = models.CharField(blank=True, max_length=300)
     details = models.TextField(blank=True)
     image = models.ImageField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
