@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+import django_heroku
+
 from django.contrib.messages import constants as messages
 import os
 from pathlib import Path
@@ -149,3 +151,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = 'atikur2552'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+# Activate Django-Heroku.
+django_heroku.settings(locals())
