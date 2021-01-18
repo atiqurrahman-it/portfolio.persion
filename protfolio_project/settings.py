@@ -18,6 +18,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -56,10 +59,7 @@ ROOT_URLCONF = 'protfolio_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR,'templates'),
-
-        ],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,14 +118,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn")
+
+MEDIA_ROOT = MEDIA_DIR
+
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 # To change the default tags for a message level
 
@@ -137,7 +141,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert alert-warning',
     messages.ERROR: 'alert alert-error',
 }
-
 
 # Contact message send email
 
