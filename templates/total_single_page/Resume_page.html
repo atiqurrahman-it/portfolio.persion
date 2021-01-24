@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} {% endblock title %}
+{% block title %} Resume page  {% endblock title %}
 
 {% block stylesheet %}
 {% endblock stylesheet %}
@@ -21,6 +21,19 @@
 
 <!-- resume section -->
 {% block resume %}
+ <div class="mt-5">
+      <div class="container">
+        <div class="row no-gutters slider-text  justify-content-center ">
+          <div class="col-lg-12 ftco-animate align-items-center">
+          	<div class="text text-center single_post_title">
+          		<h3 class="mb-1 bread mt-3"> About Me </h3>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home' %}">Home <i class="ion-ios-arrow-forward"></i></a></span>  <span>Resume  <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% include 'Resume.html' %}
 {% endblock resume %}
 
@@ -38,6 +51,8 @@
 
 
 {% block main_contain %}
+
+
 {% endblock main_contain %}
 
 {% block script %}

@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {% endblock title %}
+
+{% block stylesheet %}
+{% endblock stylesheet %}
+
+
+{% block header%}
+{% include 'navbar2.html' %}
+{% endblock header%}
+
+<!-- about header_body -->
+{% block header_body %}
+{% endblock header_body %}
+
+<!-- about section -->
+{% block about%}
+{% endblock about%}
+
+<!-- resume section -->
+{% block resume %}
+{% endblock resume %}
+
+<!-- services section -->
+{% block services %}
+{% endblock services %}
+
+<!-- project section -->
+{% block project %}
+{% endblock project %}
+
+<!-- protfolio section -->
+{% block protfolio %}
+{% endblock protfolio %}
+
+{% block main_contain %}
+ <section class="ftco-section ftco-project" id="projects-section">
+        <div class="container-fluid px-md-0">
+            <div class="row no-gutters justify-content-center pb-5">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <h1> this category is no post in project </h1>
+                </div>
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <a href="{% url 'home' %}"><button type="button" class="btn btn-primary btn-lg"> Home </button></a>
+                    <a href="#"><button type="button" class="btn btn-secondary btn-lg">Back</button></a>
+                </div>
+            </div>
+        </div>
+ </section>
+
+{% endblock main_contain %}
+
+{% block script %}
+{% endblock script %}

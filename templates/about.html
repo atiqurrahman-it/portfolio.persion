@@ -2,15 +2,22 @@
         <div class="container">
             <div class="row d-flex no-gutters">
                 <div class="col-md-6 col-lg-6 d-flex">
-                    <div class="img-about img d-flex align-items-stretch">
+                    <div class="img-about img d-flex ">
                         <div class="overlay"></div>
-                        <div class="img d-flex align-self-stretch align-items-center" style="background-image:url({{ about_me.image.url }});">
+                         {% if about_me.image  %}
+                        <div class="img d-flex align-self-stretch align-items-center" style="width:100%;maximum-height:600px;background-image:url({{ about_me.image.url }});">
+                               {%endif%}
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6 pl-md-5 py-5">
                     <div class="row justify-content-start pb-3">
                         <div class="col-md-12 heading-section ftco-animate">
+<!--                            d-none d-sm-block d-md-none -->
+                             {% if about_me.image  %}
+                            <div class="col-12 atiqur_image_about">
+                                <img class="" src="{{ about_me.image.url }}" style="width:400px;height:500px;">
+                            </div>
                             <h1 class="big">About</h1>
                             <h2 class="mb-4">About Me</h2>
                             <p> {{ about_me.}} </p>
@@ -23,14 +30,19 @@
                                 <li class="d-flex"><span>Phone: </span> <span>0{{ about_me.phone }} </span></li>
                             </ul>
                         </div>
+                        {%endif%}
                     </div>
                     <div class="counter-wrap ftco-animate d-flex mt-md-3">
                         <div class="text">
                             <p class="mb-4">
+                                  {% if about_me  %}
                                 <span class="number" data-number="{{ about_me.total_project }}">0</span>
+                                 {%endif%}
                                 <span>Project complete</span>
                             </p>
+                              {% if about_me  %}
                             <p><a href="{% url 'download_pdf' %}" target="_blank" class="btn btn-primary py-3 px-3">Download CV</a></p>
+                            {%endif%}
                         </div>
                     </div>
                 </div>
@@ -45,7 +57,9 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 shadow">
                         <div class="text">
+                             {% if about_me  %}
                             <strong class="number" data-number="{{ about_me.total_Awards }}">0</strong>
+                            {%endif%}
                             <span>Awards</span>
                         </div>
                     </div>
@@ -53,7 +67,9 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 shadow">
                         <div class="text">
+                            {% if about_me  %} 
                             <strong class="number" data-number="{{ about_me.total_project }}">0</strong>
+                             {%endif%}
                             <span>Complete Projects</span>
                         </div>
                     </div>
@@ -61,7 +77,9 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 shadow">
                         <div class="text">
+                              {% if about_me  %}
                             <strong class="number" data-number="{{ about_me.Happy_Customers }}">0</strong>
+                             {%endif%}
                             <span>Happy Customers</span>
                         </div>
                     </div>
@@ -69,7 +87,9 @@
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 shadow">
                         <div class="text">
+                              {% if about_me  %}
                             <strong class="number" data-number="{{ about_me.project_pending }}">0</strong>
+                             {%endif%}
                             <span> project pending </span>
                         </div>
                     </div>

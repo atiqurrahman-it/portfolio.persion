@@ -1,4 +1,5 @@
-  <section class="ftco-section ftco-no-pb goto-here" id="resume-section">
+
+<section class="ftco-section ftco-no-pb goto-here" id="resume-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -64,10 +65,8 @@
 
                                     <!-- Demo info -->
                                     <div class="row text-center mt-4">
-                                        <div class="col-6 border-right">
-                                            <div class="h4 font-weight-bold mb-0">{{ s.Skill_Pe }} %</div><span class="small text-gray">Last week</span>
-                                        </div>
-                                        <div class="col-6">
+
+                                        <div class="col-12">
                                             <div class="h4 font-weight-bold mb-0"> {{ s.Skill_Per }}%</div><span class="small text-gray">Last month</span>
                                         </div>
                                     </div>
@@ -78,7 +77,7 @@
                         </div>
                         <div class="row">
                              {% for p in Skill %}
-                            <div class="col-md-6 animate-box">
+                            <div class="col-md-12 animate-box">
                                 <h4>{{ p.Skill_name }}</h4>
                                 <div id="bar{{p.id}}" class="barfiller">
                                     <span class="tip"></span>
@@ -88,9 +87,6 @@
                               {% endfor %}
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
+
 import django_heroku
 
 from django.contrib.messages import constants as messages
@@ -35,6 +36,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # General use templates & template tags (should appear first)
+    'adminlte3',
+    # Optional: Django admin theme (must be before django.contrib.admin)
+    'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'protfolio_app',
+    # 3rd party app
+    'ckeditor',
+    'ckeditor_uploader',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -80,9 +89,11 @@ WSGI_APPLICATION = 'protfolio_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
+        # 'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -145,14 +156,27 @@ MESSAGE_TAGS = {
 # Contact message send email
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-MAILER_EMAIL_BACKEND = EMAIL_BACKEND
-
 EMAIL_HOST_USER = 'studyquery.check@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = 'atikur2552'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+
+# ckeditro
+
+SITE_ID = 1
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
+# ckedotr end
+
+ # Activate Django-Heroku.
+ django_heroku.settings(locals())

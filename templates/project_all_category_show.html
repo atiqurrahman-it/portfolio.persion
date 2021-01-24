@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {% endblock title %}
+
+{% block stylesheet %}
+{% endblock stylesheet %}
+
+
+{% block header%}
+{% include 'navbar2.html' %}
+{% endblock header%}
+
+<!-- about header_body -->
+{% block header_body %}
+{% endblock header_body %}
+
+<!-- about section -->
+{% block about%}
+{% endblock about%}
+
+<!-- resume section -->
+{% block resume %}
+{% endblock resume %}
+
+<!-- services section -->
+{% block services %}
+{% endblock services %}
+
+<!-- project section -->
+{% block project %}
+{% endblock project %}
+
+<!-- protfolio section -->
+{% block protfolio %}
+{% endblock protfolio %}
+
+
+{% block main_contain %}
+
+ <section class="ftco-section ftco-project" id="projects-section">
+        <div class="container-fluid px-md-0">
+            <div class="row no-gutters justify-content-center pb-5">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <h1 class="big big-2">Projects</h1>
+                    <h4 class="mb-4"> Category : {{pro_cat}}</h4>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                {% for p in project_all_category %}
+                <div class="col-md-4">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center"  style="background-image: url({{ p.image.url }});">
+                        <div class="overlay"></div>
+                        <div class="text text-center p-4">
+                            <h3><a href="{% url 'single' id=p.id %}"> {{ p.title }} </a></h3>
+                            <span>{{ p.category }} </span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+ </section>
+
+
+<div class="container">
+     <div class="row">
+         <div class="col-md-12">
+             <nav aria-label="Page navigation example">
+                  {% if project_all_category.has_other_pages %}
+                 <ul class="pagination">
+                     {% if project_all_category.has_previous %}
+                      <li  class="page-item"><a  class="page-link" href="?page={{ project_all_category.previous_page_number }}">Previous</a></li>
+                    {% else %}
+                      <li class="disabled"></li>
+                    {% endif %}
+
+                      {% for i in project_all_category.paginator.page_range %}
+                      {% if project_all_category.number == i %}
+                     <li class="active"> <a  class="page-link active">  {{ i }} </a> </li>
+                      {% else %}
+                        <li class="page-item"><a  class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+
+                     {% if project_all_category.has_next %}
+                     <li class="page-item"><a class="page-link" href="?page={{ project_all_category.next_page_number }}">Next</a></li>
+                     {% else %}
+                     <li class="disabled"></li>
+                     {% endif %}
+                 </ul>
+                 {% endif %}
+             </nav>
+
+           </div>
+       </div>
+   </div>
+
+{% endblock main_contain %}
+
+{% block script %}
+{% endblock script %}

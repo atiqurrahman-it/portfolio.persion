@@ -45,16 +45,13 @@
 
 {% block main_contain %}
 
-
 <section class="ftco-section" id="blog-section">
         <div class="container" data-aos="fade-up">
             <div class="section-title">
                 <h2> Search </h2>
             </div>
-
-
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-               {% for search in search_protfolio %}
+               {% for search in all_search_portfolio_show %}
                 <div class="col-lg-4 col-md-6 portfolio-item mix filter-app">
                     <a href="{% url 'single_page_2' id=search.id %}"> <img src="{{ search.image.url }}" style="width:350px; height:240px;" class="img-fluid" alt=""> </a>
                     <div class="portfolio-info">
@@ -66,7 +63,6 @@
             </div>
         </div>
     </section>
-
 {% endblock main_contain %}
 
 {% block script %}

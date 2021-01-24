@@ -1,12 +1,16 @@
 from django.db import models
 
+# 3rd party app
+from ckeditor_uploader.fields import RichTextUploadingField
+from phonenumber_field.modelfields import PhoneNumberField
 
-# Create your models here.
+from django.utils.safestring import mark_safe
 
 
 class Footer_Header(models.Model):
     name = models.CharField(max_length=150)
-    phone = models.IntegerField()
+    my_picture = models.ImageField()
+    phone = PhoneNumberField(null=False, blank=False, unique=True)
     email = models.EmailField()
     details = models.TextField()
     address = models.TextField(max_length=600)
@@ -16,26 +20,39 @@ class Footer_Header(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
+    def image_tag(self):
+        from django.utils.html import mark_safe
+        return mark_safe('<img src="%s" width="100px" height="100px" />' % (self.my_picture.url))
+
+    image_tag.short_description = 'Image'
+
     def __str__(self):
         return self.name
 
 
 class About_me(models.Model):
     name = models.CharField(max_length=150)
-    image = models.ImageField(blank=True, null=True)
-    phone = models.IntegerField()
+    image = models.ImageField(upload_to='about_img', blank=True, null=True)
+    contact_sidebar_image = models.ImageField(upload_to='contact_sidebar')
+    phone = PhoneNumberField(null=False, blank=False, unique=True)
     email = models.EmailField()
     details = models.TextField()
     address = models.TextField(max_length=600)
     Date_of_birth = models.DateField()
     Zip_code = models.IntegerField()
-    cv = models.FileField(blank=True, null=True)
+    cv = models.FileField(upload_to='about_img', blank=True, null=True)
     total_project = models.IntegerField(blank=True)
     Happy_Customers = models.IntegerField(blank=True, default=20)
     total_Awards = models.IntegerField(blank=True, default=100)
     project_pending = models.IntegerField(blank=True, default=50)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
+
+    def image_tag(self):
+        from django.utils.html import mark_safe
+        return mark_safe('<img src="%s" width="100px" height="100px" />' % (self.image.url))
+
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return self.name
@@ -75,7 +92,7 @@ class Contact(models.Model):
         return self.name
 
 
-class Category(models.Model):
+class Project_Category(models.Model):
     name = models.CharField(max_length=50)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -86,14 +103,20 @@ class Category(models.Model):
 
 class project(models.Model):
     title = models.CharField(blank=True, max_length=300)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    details = models.TextField(blank=True)
-    image = models.ImageField(blank=True)
+    category = models.ForeignKey(Project_Category, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='project_img',blank=True)
+    details = RichTextUploadingField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def image_url(self):
         return self.image.url
+
+    def image_tag(self):
+        from django.utils.html import mark_safe
+        return mark_safe('<img src="%s" width="100px" height="100px" />' % (self.image.url))
+
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return self.title
@@ -111,10 +134,16 @@ class Protfolio_Category(models.Model):
 class Protfolio(models.Model):
     title = models.CharField(blank=True, max_length=300)
     pro_category = models.ForeignKey(Protfolio_Category, on_delete=models.CASCADE)
-    details = models.TextField(blank=True)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='portfolio_img',blank=True)
+    details = RichTextUploadingField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
+
+    def image_tag(self):
+        from django.utils.html import mark_safe
+        return mark_safe('<img src="%s" width="100px" height="100px" />' % (self.image.url))
+
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return self.title
@@ -123,9 +152,15 @@ class Protfolio(models.Model):
 class Service(models.Model):
     title = models.CharField(blank=True, max_length=300)
     details = models.TextField(blank=True)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='service_img',blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
+
+    def image_tag(self):
+        from django.utils.html import mark_safe
+        return mark_safe('<img src="%s" width="100px" height="100px" />' % (self.image.url))
+
+    image_tag.short_description = 'Image'
 
     def __str__(self):
         return self.title
@@ -136,6 +171,8 @@ class Experience_project(models.Model):
     place_name = models.CharField(max_length=250)
     work_year = models.CharField(max_length=10)
     details = models.TextField()
+    create_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.work_category

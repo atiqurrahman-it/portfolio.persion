@@ -12,16 +12,15 @@
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul id="portfolio-flters">
                         <li data-filter="all" class="filter-active">All</li>
-                        {% for p in prot_category%}
+                        {% for p in portfolio_cate%}
                         <li data-filter=".{{p.name}}"> {{p.name}} </li>
                         {% endfor %}
-
                     </ul>
                 </div>
             </div>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-                {% for pro in total_protfolio %}
+                {% for pro in total_portfolio %}
                 <div class="col-lg-4 col-md-6 portfolio-item mix {{pro.pro_category.name }}">
                     <a href="{% url 'single_page_2' id=pro.id %}"> <img src="{{ pro.image.url }}" style="width:350px; height:240px;" class="img-fluid" alt=""> </a>
                     <div class="portfolio-info">
