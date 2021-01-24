@@ -25,7 +25,7 @@ def HomePage(request):
         footer_header = Footer_Header.objects.latest('id')
 
     try:
-        about_me = get_object_or_404(About_me)
+        about_me = get_object_or_404(About_me).latest('id')
     except:
         about_me = About_me.objects.latest('id')
 
