@@ -5,12 +5,12 @@ from .models import Footer_Header, About_me, Contact, project, Project_Category,
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .form import Contact_Form
-from django.core.mail import send_mail
+from django.core.mail import send_mail,BadHeaderError
 from django.conf import settings
 # download Cv
 from django.views.generic import View
 from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 from django.http import HttpResponseRedirect
 
@@ -48,9 +48,19 @@ def HomePage(request):
             Message = form.cleaned_data.get('details')
             Contact.objects.create(name=name, email=email, subject=subject, Meassage=Message)
             from_email = form.cleaned_data.get('email')
+
+            body = {
+                'first_name': form.cleaned_data['name'],
+                'email': form.cleaned_data['email'],
+                'details': form.cleaned_data['details'],
+            }
+            message = "\n".join(body.values())
             to_email = settings.EMAIL_HOST_USER
-            to_list = [to_email]
-            send_mail(subject, Message, from_email, to_list)
+
+            try:
+                send_mail(subject, message, from_email, [to_email])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
             return redirect('home')
         else:
             return redirect('home')
@@ -392,16 +402,15 @@ def contact_page(request):
 
 
 def download_pdf(request):
-    # about_CV = get_object_or_404(About_me)
-    # name=about_CV.cv.url
     fs = FileSystemStorage()
-    filename = 'media/atikur.pdf'
+    filename = 'atikur.pdf'
     if fs.exists(filename):
         with fs.open(filename) as pdf:
-
             response = HttpResponse(pdf, content_type='application/pdf')
-            response['Content-Disposition'] = 'inline; filename="atikur.pdf"'
+            # response['Content-Disposition'] = 'attachment; filename="atikur.pdf"' #user will be prompted with the browser’s open/save file
+            response['Content-Disposition'] = 'inline; filename="atikur.pdf"'  # user will be prompted
             return response
+
 
     else:
         return HttpResponseNotFound('The requested pdf was not found in our server.')

@@ -134,7 +134,7 @@
     height: 50%;
     left: 0;
     background-image: url({{about_me.contact_sidebar_image.url}}) !important;
-    background-size: cover;
+    background-size: cover ;
     transition: 1s;
     filter: grayscale(100%);
     /*for img  background white  */
@@ -148,6 +148,7 @@
 }
 
 .imgdiv::after {
+
     bottom: 0;
     transform-origin: bottom;
     transform: perspective(500px) rotate(0deg);
@@ -160,6 +161,7 @@
 }
 
 .imgdiv:hover::after {
+
     transform: perspective(500px) rotateX(-270deg);
 }
 
