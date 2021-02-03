@@ -14,6 +14,8 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 from django.http import HttpResponseRedirect
 
+# atiqur5
+
 
 # Create your views here.
 
