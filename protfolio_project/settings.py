@@ -160,7 +160,7 @@ EMAIL_HOST_USER = 'studyquery.check@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = 'atikur2552'
+EMAIL_HOST_PASSWORD = 'email_password'
 
 
 # ckeditro
