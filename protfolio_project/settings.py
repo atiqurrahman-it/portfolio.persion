@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import django_heroku
 
 from django.contrib.messages import constants as messages
 import os
@@ -178,5 +177,4 @@ CKEDITOR_CONFIGS = {
 }
 # ckedotr end
 
- # Activate Django-Heroku.
-django_heroku.settings(locals())
+

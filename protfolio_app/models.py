@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 
 
 class Footer_Header(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     my_picture = models.ImageField()
     phone = PhoneNumberField(null=False, blank=False, unique=True)
@@ -31,6 +32,7 @@ class Footer_Header(models.Model):
 
 
 class About_me(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     image = models.ImageField(upload_to='about_img', blank=True, null=True)
     contact_sidebar_image = models.ImageField(upload_to='contact_sidebar')
@@ -59,6 +61,7 @@ class About_me(models.Model):
 
 
 class Education(models.Model):
+    id = models.AutoField(primary_key=True)
     lavel = models.CharField(max_length=150)
     campus_name = models.CharField(max_length=220)
     year = models.CharField(max_length=10)
@@ -71,6 +74,7 @@ class Education(models.Model):
 
 
 class Skills(models.Model):
+    id = models.AutoField(primary_key=True)
     Skill_name = models.CharField(blank=True, max_length=25)
     Skill_Per = models.IntegerField(blank=True)
     create_at = models.DateTimeField(auto_now_add=True)
@@ -81,6 +85,7 @@ class Skills(models.Model):
 
 
 class Contact(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     email = models.EmailField()
     subject = models.CharField(max_length=300)
@@ -93,6 +98,7 @@ class Contact(models.Model):
 
 
 class Project_Category(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -102,6 +108,7 @@ class Project_Category(models.Model):
 
 
 class project(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(blank=True, max_length=300)
     category = models.ForeignKey(Project_Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='project_img',blank=True)
@@ -123,6 +130,7 @@ class project(models.Model):
 
 
 class Protfolio_Category(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
@@ -132,6 +140,7 @@ class Protfolio_Category(models.Model):
 
 
 class Protfolio(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(blank=True, max_length=300)
     pro_category = models.ForeignKey(Protfolio_Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='portfolio_img',blank=True)
@@ -150,6 +159,7 @@ class Protfolio(models.Model):
 
 
 class Service(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(blank=True, max_length=300)
     details = models.TextField(blank=True)
     image = models.ImageField(upload_to='service_img',blank=True)
@@ -167,6 +177,7 @@ class Service(models.Model):
 
 
 class Experience_project(models.Model):
+    id = models.AutoField(primary_key=True)
     work_category = models.CharField(max_length=150)
     place_name = models.CharField(max_length=250)
     work_year = models.CharField(max_length=10)
@@ -180,6 +191,7 @@ class Experience_project(models.Model):
 
 # faq
 class FAQ(models.Model):
+    id = models.AutoField(primary_key=True)
     question = models.CharField(max_length=100)
     answer = models.TextField()
     create_at = models.DateTimeField(auto_now_add=True)
