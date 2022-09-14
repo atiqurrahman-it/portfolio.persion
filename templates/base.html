@@ -101,14 +101,13 @@
           padding: 2px;
         }
       }
-
-      {% if footer_header %}
+    {% if about_me.cover_pic %}
       @media (min-width: 555px) {
         .hero-wrap {
-          background-image: url({{footer_Header.my_picture.url}}) !important;
+          background-image:url({{about_me.cover_pic.url}}) !important;
         }
       }
-      {% endif %}
+    {% endif %}
 
       /*.atiqur_image_about img{*/
       /*    display:none;*/
@@ -119,7 +118,7 @@
       .imgbgdiv {
         margin: 0;
         padding: 0;
-        background: url("silder5.jpeg");
+        background:#0000 !important;
         background-size: cover;
         width: 100%;
         height: 500px;
@@ -130,7 +129,7 @@
         text-align: center;
         width: 300px;
         height: 303px;
-        /* background-image: url({{about_me.contact_sidebar_image.url}}) !important; */
+        background-image:url({{about_me.contact_sidebar_image.url}}) !important; 
         background-size: cover;
       }
 
@@ -141,7 +140,7 @@
         width: 100%;
         height: 50%;
         left: 0;
-        /* background-image: url({{about_me.contact_sidebar_image.url}}) !important; */
+        background-image:url({{about_me.contact_sidebar_image.url}}) !important; 
         background-size: cover;
         transition: 1s;
         filter: grayscale(100%);

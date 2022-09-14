@@ -46,8 +46,7 @@
 
 {% block main_contain %}
 
-
-<section class="ftco-section ftco-hireme img" style="background-image: url(images/bg_1.jpg)">
+<section class="ftco-section ftco-hireme img">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-center">
@@ -60,6 +59,7 @@
     </div>
 </section>
 
+
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
     <div class="container">
         {% if about_me %}
@@ -70,7 +70,8 @@
                 <p> {{ about_me.details }} </p>
             </div>
         </div>
-        {%endif%}
+        {% endif %}
+
         {% if about_me %}
         <div class="row d-flex contact-info mb-5">
             <div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -91,7 +92,7 @@
                     </div>
                     <div>
                         <h3 class="mb-4">Contact Number</h3>
-                        <p><a href="tel://1234567920"> {{ about_me.phone }} </a></p>
+                        <p><a href="tel://1234567920">{{ about_me.phone }} </a></p>
                     </div>
                 </div>
             </div>
@@ -118,7 +119,7 @@
                 </div>
             </div>
         </div>
-        {%endif%}
+        {% endif %}
 
 
         <div class="row no-gutters block-9">

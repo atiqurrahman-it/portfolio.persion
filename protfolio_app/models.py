@@ -1,10 +1,8 @@
-from django.db import models
-
 # 3rd party app
 from ckeditor_uploader.fields import RichTextUploadingField
-from phonenumber_field.modelfields import PhoneNumberField
-
+from django.db import models
 from django.utils.safestring import mark_safe
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Footer_Header(models.Model):
@@ -35,6 +33,7 @@ class About_me(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     image = models.ImageField(upload_to='about_img', blank=True, null=True)
+    cover_pic = models.ImageField(upload_to='cover_pic',blank=True,null=True)
     contact_sidebar_image = models.ImageField(upload_to='contact_sidebar')
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     email = models.EmailField()
