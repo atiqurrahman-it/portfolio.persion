@@ -1,6 +1,7 @@
- <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+<section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
         <div class="container">
             <div class="row d-flex no-gutters">
+            {% if about_me %}
                 <div class="col-md-6 col-lg-6 d-flex">
                     <div class="img-about img d-flex ">
                         <div class="overlay"></div>
@@ -47,12 +48,14 @@
                     </div>
                 </div>
             </div>
+            {%endif%}
         </div>
     </section>
 
 
      <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
         <div class="container-fluid px-md-5">
+            {% if about_me %}
             <div class="row d-md-flex align-items-center">
                 <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 shadow">
@@ -95,5 +98,7 @@
                     </div>
                 </div>
             </div>
+            {%endif%}
         </div>
+       
     </section>

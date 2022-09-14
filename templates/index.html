@@ -62,6 +62,7 @@
 
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
     <div class="container">
+        {% if about_me %}
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
                 <h1 class="big big-2">Contact</h1>
@@ -69,7 +70,8 @@
                 <p> {{ about_me.details }} </p>
             </div>
         </div>
-
+        {%endif%}
+        {% if about_me %}
         <div class="row d-flex contact-info mb-5">
             <div class="col-md-6 col-lg-3 d-flex ftco-animate">
                 <div class="align-self-stretch box text-center p-4 shadow">
@@ -116,6 +118,7 @@
                 </div>
             </div>
         </div>
+        {%endif%}
 
 
         <div class="row no-gutters block-9">

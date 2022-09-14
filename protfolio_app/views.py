@@ -1,18 +1,18 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, redirect, Http404
-from .models import Footer_Header, About_me, Contact, project, Project_Category, Service, Education, Skills, \
-    Protfolio_Category, \
-    Protfolio, FAQ, Experience_project
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
-from .form import Contact_Form
-from django.core.mail import send_mail,BadHeaderError
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+from django.core.mail import BadHeaderError, send_mail
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import (HttpResponse, HttpResponseNotFound,
+                         HttpResponseRedirect)
+from django.shortcuts import (Http404, HttpResponse, get_object_or_404,
+                              redirect, render)
 # download Cv
 from django.views.generic import View
-from django.core.files.storage import FileSystemStorage
-from django.http import HttpResponse, HttpResponseNotFound
 
-from django.http import HttpResponseRedirect
+from .form import Contact_Form
+from .models import (FAQ, About_me, Contact, Education, Experience_project,
+                     Footer_Header, Project_Category, Protfolio,
+                     Protfolio_Category, Service, Skills, project)
 
 # atiqur5
 
@@ -27,9 +27,9 @@ def HomePage(request):
         footer_header = Footer_Header.objects.latest('id')
 
     try:
-        about_me = get_object_or_404(About_me).latest('id')
+        about_me = get_object_or_404(About_me).last()
     except:
-        about_me = About_me.objects.latest('id')
+        about_me = About_me.objects.last()
 
     total_project = project.objects.order_by('-id')[:6]  # for  index.html
     all_service = Service.objects.order_by('-id')[:6]  # for  index.html
