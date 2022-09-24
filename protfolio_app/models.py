@@ -41,7 +41,7 @@ class About_me(models.Model):
     address = models.TextField(max_length=600)
     Date_of_birth = models.DateField()
     Zip_code = models.IntegerField(blank=False)
-    cv = models.FileField(upload_to='about_img', blank=True, null=True)
+    cv = models.FileField(upload_to='about_cv', blank=True, null=True)
     total_project = models.IntegerField(blank=True)
     Happy_Customers = models.IntegerField(blank=True, default=20)
     total_Awards = models.IntegerField(blank=True, default=100)
