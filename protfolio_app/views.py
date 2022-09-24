@@ -59,8 +59,10 @@ def HomePage(request):
             message = "\n".join(body.values())
             to_email = settings.EMAIL_HOST_USER
 
+            recipient_list = [to_email,]
+         
             try:
-                send_mail(subject, message, from_email, [to_email])
+                send_mail(subject, message, from_email, recipient_list , fail_silently=False)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return redirect('home')
@@ -404,13 +406,16 @@ def contact_page(request):
 
 
 def download_pdf(request):
+    pdf=About_me.objects.last()
+    pdf_name=pdf.cv.name
+ 
     fs = FileSystemStorage()
-    filename = 'atikur.pdf'
+    filename =pdf_name
     if fs.exists(filename):
         with fs.open(filename) as pdf:
             response = HttpResponse(pdf, content_type='application/pdf')
             # response['Content-Disposition'] = 'attachment; filename="atikur.pdf"' #user will be prompted with the browser’s open/save file
-            response['Content-Disposition'] = 'inline; filename="atikur.pdf"'  # user will be prompted
+            response['Content-Disposition'] = 'inline; filename="atiqurCV'  # user will be prompted
             return response
 
 

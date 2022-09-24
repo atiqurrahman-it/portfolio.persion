@@ -42,202 +42,98 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
     <style>
-      .atiqur li a:hover {
-        color: black;
-        transform: rotate(360deg);
-      }
-      /*.ftco-footer-social li a {*/
-      /*    color: green;*/
-      /*    transform: rotate(360deg);*/
-      /*}*/
-
-      .atiqur li a {
-        height: 50px;
-        width: 50px;
-        background: rgb(0 0 0 / 10%);
-      }
-
-      .hero-wrap {
-        background-image: none !important;
-      }
-
-      @media (min-width: 768px) {
-        .atikfotter li a {
-          height: 35px;
-          width: 30px;
-          display: block;
-          float: left;
-          border-radius: 50%;
-          padding: 2px;
+        .atiqur li a:hover {
+          color: black;
+          transform: rotate(360deg);
         }
-      }
+        /*.ftco-footer-social li a {*/
+        /*    color: green;*/
+        /*    transform: rotate(360deg);*/
+        /*}*/
 
-      @media (max-width: 575.98px) {
-        hero-wrap {
-          background-image: none !important;
-        }
-      }
-
-      @media (min-width: 576px) {
-      }
-
-      @media (min-width: 768px) {
-        section.hero-wrap.js-fullheight {
-          background-image: none;
-        }
-
-        .atiqur_image_about img {
-          display: none;
-        }
-      }
-
-      @media (min-width: 995px) {
-        .atikfotter li a {
+        .atiqur li a {
           height: 50px;
           width: 50px;
-          display: block;
-          float: left;
-          border-radius: 50%;
-          padding: 2px;
+          background: rgb(0 0 0 / 10%);
         }
-      }
-    {% if about_me.cover_pic %}
-      @media (min-width: 555px) {
+
         .hero-wrap {
-          background-image:url({{about_me.cover_pic.url}}) !important;
+          background-image: none !important;
         }
-      }
-    {% endif %}
 
-      /*.atiqur_image_about img{*/
-      /*    display:none;*/
-      /*}*/
-
-      /*for image after befor   */
-
-      .imgbgdiv {
-        margin: 0;
-        padding: 0;
-        background:#0000 !important;
-        background-size: cover;
-        width: 100%;
-        height: 500px;
-      }
-
-      .imgdiv {
-        position: absolute;
-        text-align: center;
-        width: 300px;
-        height: 303px;
-        background-image:url({{about_me.contact_sidebar_image.url}}) !important; 
-        background-size: cover;
-      }
-
-      .imgdiv::before,
-      .imgdiv::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 50%;
-        left: 0;
-        background-image:url({{about_me.contact_sidebar_image.url}}) !important; 
-        background-size: cover;
-        transition: 1s;
-        filter: grayscale(100%);
-        /*for img  background white  */
-      }
-
-      .imgdiv::before {
-        top: 0;
-        transform-origin: top;
-        transform: perspective(500px) rotate(0deg);
-        background-position: 0 0;
-      }
-
-      .imgdiv::after {
-        bottom: 0;
-        transform-origin: bottom;
-        transform: perspective(500px) rotate(0deg);
-        background-position: 0 130%;
-        /* hover ar background img milar jonno */
-      }
-
-      .imgdiv:hover::before {
-        transform: perspective(500px) rotateX(270deg);
-      }
-
-      .imgdiv:hover::after {
-        transform: perspective(500px) rotateX(-270deg);
-      }
-
-      @media screen and (max-width: 766px) {
-        .imgdiv {
-          position: absolute;
-          text-align: center;
-          width: 400px;
-          height: 300px;
-          /*background: url(atik.jpg);*/
-          background-size: cover;
-          margin-top: 29px;
-          margin-left: 27px;
-          margin-bottom: 0px;
-          /* padding-top: 57px; */
+        @media (min-width: 768px) {
+          .atikfotter li a {
+            height: 35px;
+            width: 30px;
+            display: block;
+            float: left;
+            border-radius: 50%;
+            padding: 2px;
+          }
         }
-      }
 
-      @media (min-width: 766px) and (max-width: 990px) {
-        .form-control {
-          margin-left: 7px;
+        @media (max-width: 575.98px) {
+          hero-wrap {
+            background-image: none !important;
+          }
         }
+
+        @media (min-width: 576px) {
+        }
+
+        @media (min-width: 768px) {
+          section.hero-wrap.js-fullheight {
+            background-image: none;
+          }
+
+          .atiqur_image_about img {
+            display: none;
+          }
+        }
+
+        @media (min-width: 995px) {
+          .atikfotter li a {
+            height: 50px;
+            width: 50px;
+            display: block;
+            float: left;
+            border-radius: 50%;
+            padding: 2px;
+          }
+        }
+      {% if about_me.cover_pic %}
+        @media (min-width: 555px) {
+          .hero-wrap {
+            background-image:url({{about_me.cover_pic.url}}) !important;
+          }
+        }
+      {% endif %}
+
+        /*.atiqur_image_about img{*/
+        /*    display:none;*/
+        /*}*/
+
+        /*for image after befor   */
+
+  
 
         .imgdiv {
           position: absolute;
           text-align: center;
           width: 300px;
-          height: 227px;
-          /*background: url(atik.jpg);*/
+          height: 350px;
+          background-image:url({{about_me.contact_sidebar_image.url}}) !important;
           background-size: cover;
-        }
-      }
-
-      @media (min-width: 991px) and (max-width: 1200px) {
-        .form-control {
-          margin-left: 7px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          clear:both;
+          overflow:hidden;
         }
 
-        .imgdiv {
-          position: absolute;
-          text-align: center;
-          width: 400px;
-          height: 303px;
-          /*background: url(atik.jpg);*/
-          background-size: cover;
-        }
-      }
 
-      @media (min-width: 1201px) {
-        .form-control {
-          margin-left: 7px;
-        }
+        
 
-        .imgdiv {
-          position: absolute;
-          text-align: center;
-          width: 400px;
-          height: 303px;
-          /*background: url(atik.jpg);*/
-          background-size: cover;
-        }
 
-        .imgbgdiv {
-          margin: 0;
-          padding: 0;
-          /*background: url("silder5.jpeg");*/
-          background-size: cover;
-          width: 100%;
-          height: 500px;
-        }
-      }
     </style>
 
     {% block stylesheet %} {% endblock stylesheet %}
@@ -245,7 +141,8 @@
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
     <!-- about header -->
-    {% block header %} {% endblock header%} {% block header_body %} {% endblock header_body %}
+    {% block header %} {% endblock header%} 
+    {% block header_body %} {% endblock header_body %}
 
     <!-- about section -->
     {% block about %} {% endblock about %}
