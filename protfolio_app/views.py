@@ -24,7 +24,7 @@ def HomePage(request):
     try:
         footer_header = get_object_or_404(Footer_Header)
     except:
-        footer_header = Footer_Header.objects.latest('id')
+        footer_header = Footer_Header.objects.last()
 
     try:
         about_me = get_object_or_404(About_me).last()
@@ -33,12 +33,12 @@ def HomePage(request):
 
     total_project = project.objects.order_by('-id')[:6]  # for  index.html
     all_service = Service.objects.order_by('-id')[:6]  # for  index.html
-    education = Education.objects.all()
-    Experience_proj = Experience_project.objects.all()
+    education = Education.objects.all().order_by('-id')
+    Experience_proj = Experience_project.objects.all().order_by('-id')
     Skill = Skills.objects.all().order_by('id')[:6]
     Resent_Skill = Skills.objects.order_by('-id')[:3]
     port_category = Protfolio_Category.objects.order_by('-id')[:3]
-    total_portfolio = Protfolio.objects.all()[:9]
+    total_portfolio = Protfolio.objects.all().order_by('-id')[:9]
     Faq = FAQ.objects.all()[:12]
 
     if request.method == 'POST':
