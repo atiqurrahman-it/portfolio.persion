@@ -1,8 +1,8 @@
 
+# heroku server 
 import os
 from pathlib import Path
 
-# heroku server 
 import django_heroku
 # hidden code 
 from decouple import config
@@ -131,6 +131,9 @@ STATICFILES_DIRS = [
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Enable WhiteNoise's GZip compression of static assets.
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

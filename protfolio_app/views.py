@@ -61,10 +61,11 @@ def HomePage(request):
 
             recipient_list = [to_email,]
          
-            try:
-                send_mail(subject, message, from_email, recipient_list , fail_silently=False)
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            # try:
+            #     send_mail(subject, message, from_email, recipient_list , fail_silently=False)
+            # except BadHeaderError:
+            #     return HttpResponse('Invalid header found.')
+
             return redirect('home')
         else:
             return redirect('home')
@@ -389,7 +390,8 @@ def contact_page(request):
             from_email = form.cleaned_data.get('email')
             to_email = settings.EMAIL_HOST_USER
             to_list = [to_email]
-            send_mail(subject, Message, from_email, to_list)
+            # send_mail(subject, Message, from_email, to_list)
+
             return redirect('home')
         else:
             return redirect('contact')
