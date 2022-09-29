@@ -1,4 +1,4 @@
-# 3rd party app
+# 3rd party 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.utils.safestring import mark_safe

@@ -101,7 +101,7 @@ def projects_page(request):
         about_me = About_me.objects.latest('id')
     # because footer+about are both footer data
 
-    total_project = project.objects.all()
+    total_project = project.objects.all().order_by('-id')
     page = request.GET.get('page', 1)
     paginator = Paginator(total_project, 3)
     try:
