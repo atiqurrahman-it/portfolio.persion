@@ -1,9 +1,8 @@
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-from django.core.mail import BadHeaderError, send_mail
+# from django.core.mail import BadHeaderError, send_mail
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import (HttpResponse, HttpResponseNotFound,
-                         HttpResponseRedirect)
+from django.http import (HttpResponse, HttpResponseNotFound,)
 from django.shortcuts import (Http404, HttpResponse, get_object_or_404,
                               redirect, render)
 # download Cv
@@ -15,8 +14,6 @@ from .models import (FAQ, About_me, Contact, Education, Experience_project,
                      Protfolio_Category, Service, Skills, project)
 
 # atiqur5
-
-
 # Create your views here.
 
 
@@ -49,17 +46,18 @@ def HomePage(request):
             subject = form.cleaned_data.get('subject')
             Message = form.cleaned_data.get('details')
             Contact.objects.create(name=name, email=email, subject=subject, Meassage=Message)
-            from_email = form.cleaned_data.get('email')
 
-            body = {
-                'first_name': form.cleaned_data['name'],
-                'email': form.cleaned_data['email'],
-                'details': form.cleaned_data['details'],
-            }
-            message = "\n".join(body.values())
-            to_email = settings.EMAIL_HOST_USER
+            # from_email = form.cleaned_data.get('email')
 
-            recipient_list = [to_email,]
+            # body = {
+            #     'first_name': form.cleaned_data['name'],
+            #     'email': form.cleaned_data['email'],
+            #     'details': form.cleaned_data['details'],
+            # }
+            # message = "\n".join(body.values())
+            # to_email = settings.EMAIL_HOST_USER
+
+            # recipient_list = [to_email,]
          
             # try:
             #     send_mail(subject, message, from_email, recipient_list , fail_silently=False)
@@ -422,4 +420,4 @@ def download_pdf(request):
 
 
     else:
-        return HttpResponseNotFound('The requested pdf was not found in our server.')
+        return HttpResponseNotFound('The requested pdf was not found in our server !.')
